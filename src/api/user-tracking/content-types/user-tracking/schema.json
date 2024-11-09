@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_trackings",
+  "info": {
+    "singularName": "user-tracking",
+    "pluralName": "user-trackings",
+    "displayName": "User tracking"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Status": {
+      "type": "enumeration",
+      "enum": [
+        "Visto",
+        "Pendiente"
+      ]
+    },
+    "User_rating": {
+      "type": "integer"
+    },
+    "Notes": {
+      "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user_trackings"
+    },
+    "movie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::film.film",
+      "inversedBy": "user_trackings"
+    }
+  }
+}
