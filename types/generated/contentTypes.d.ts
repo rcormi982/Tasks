@@ -693,10 +693,13 @@ export interface ApiFilmFilm extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Tittle: Attribute.String;
+    Title: Attribute.String;
     Type: Attribute.Enumeration<['Pel\u00EDcula', 'Serie']>;
     Genre: Attribute.String;
-    Rating: Attribute.Integer;
+    Rating: Attribute.Integer &
+      Attribute.SetMinMax<{
+        max: 10;
+      }>;
     Image: Attribute.Media;
     user_trackings: Attribute.Relation<
       'api::film.film',

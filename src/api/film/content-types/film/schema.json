@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Tittle": {
+    "Title": {
       "type": "string"
     },
     "Type": {
@@ -26,7 +26,8 @@
       "type": "string"
     },
     "Rating": {
-      "type": "integer"
+      "type": "integer",
+      "max": 10
     },
     "Image": {
       "type": "media",
