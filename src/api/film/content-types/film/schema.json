@@ -40,14 +40,24 @@
         "audios"
       ]
     },
-    "user_trackings": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::user-tracking.user-tracking",
-      "mappedBy": "movie"
-    },
     "Premiere": {
       "type": "boolean"
+    },
+    "Comment": {
+      "type": "string"
+    },
+    "Status": {
+      "type": "enumeration",
+      "enum": [
+        "Quiero ver",
+        "Visto"
+      ]
+    },
+    "movies_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::movies-user.movies-user",
+      "inversedBy": "films"
     }
   }
 }

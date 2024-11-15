@@ -65,10 +65,10 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "user_trackings": {
+    "movies_user": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::user-tracking.user-tracking",
+      "relation": "oneToOne",
+      "target": "api::movies-user.movies-user",
       "mappedBy": "users_permissions_user"
     }
   }
