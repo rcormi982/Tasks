@@ -703,11 +703,6 @@ export interface ApiFilmFilm extends Schema.CollectionType {
     Premiere: Attribute.Boolean;
     Comment: Attribute.String;
     Status: Attribute.Enumeration<['Quiero ver', 'Visto']>;
-    movies_user: Attribute.Relation<
-      'api::film.film',
-      'manyToOne',
-      'api::movies-user.movies-user'
-    >;
     Genre: Attribute.Enumeration<
       [
         'Comedia',
@@ -725,6 +720,11 @@ export interface ApiFilmFilm extends Schema.CollectionType {
         'Documental',
         'Serie'
       ]
+    >;
+    movies_users: Attribute.Relation<
+      'api::film.film',
+      'manyToMany',
+      'api::movies-user.movies-user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -794,7 +794,7 @@ export interface ApiMoviesUserMoviesUser extends Schema.CollectionType {
     >;
     films: Attribute.Relation<
       'api::movies-user.movies-user',
-      'oneToMany',
+      'manyToMany',
       'api::film.film'
     >;
     createdAt: Attribute.DateTime;
