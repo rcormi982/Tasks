@@ -695,7 +695,6 @@ export interface ApiFilmFilm extends Schema.CollectionType {
   attributes: {
     Title: Attribute.String;
     Type: Attribute.Enumeration<['Pel\u00EDcula', 'Serie']>;
-    Genre: Attribute.String;
     Rating: Attribute.Integer &
       Attribute.SetMinMax<{
         max: 10;
@@ -708,6 +707,24 @@ export interface ApiFilmFilm extends Schema.CollectionType {
       'api::film.film',
       'manyToOne',
       'api::movies-user.movies-user'
+    >;
+    Genre: Attribute.Enumeration<
+      [
+        'Comedia',
+        'Ciencia Ficci\u00F3n',
+        'Acci\u00F3n',
+        'Musical',
+        'Terror',
+        'Aventuras',
+        'Drama',
+        'Fantas\u00EDa',
+        'Suspense',
+        'Animaci\u00F3n',
+        'Rom\u00E1ntico',
+        'Western',
+        'Documental',
+        'Serie'
+      ]
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

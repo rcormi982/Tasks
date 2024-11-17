@@ -22,9 +22,6 @@
         "Serie"
       ]
     },
-    "Genre": {
-      "type": "string"
-    },
     "Rating": {
       "type": "integer",
       "max": 10
@@ -58,6 +55,25 @@
       "relation": "manyToOne",
       "target": "api::movies-user.movies-user",
       "inversedBy": "films"
+    },
+    "Genre": {
+      "type": "enumeration",
+      "enum": [
+        "Comedia",
+        "Ciencia Ficción",
+        "Acción",
+        "Musical",
+        "Terror",
+        "Aventuras",
+        "Drama",
+        "Fantasía",
+        "Suspense",
+        "Animación",
+        "Romántico",
+        "Western",
+        "Documental",
+        "Serie"
+      ]
     }
   }
 }
