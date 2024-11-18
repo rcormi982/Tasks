@@ -15,13 +15,6 @@
     "Title": {
       "type": "string"
     },
-    "Type": {
-      "type": "enumeration",
-      "enum": [
-        "Película",
-        "Serie"
-      ]
-    },
     "Rating": {
       "type": "integer",
       "max": 10

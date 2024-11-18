@@ -694,7 +694,6 @@ export interface ApiFilmFilm extends Schema.CollectionType {
   };
   attributes: {
     Title: Attribute.String;
-    Type: Attribute.Enumeration<['Pel\u00EDcula', 'Serie']>;
     Rating: Attribute.Integer &
       Attribute.SetMinMax<{
         max: 10;
