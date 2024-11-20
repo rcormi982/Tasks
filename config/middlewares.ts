@@ -22,11 +22,5 @@ export default [
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
-  {
-    name: 'strapi::rateLimit',
-    config: {
-      enabled: false, // Desactiva el middleware de rate limit
-    },
-  },
  ];
   
