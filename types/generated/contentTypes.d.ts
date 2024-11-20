@@ -362,6 +362,177 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiFilmFilm extends Schema.CollectionType {
+  collectionName: 'films';
+  info: {
+    singularName: 'film';
+    pluralName: 'films';
+    displayName: 'Film';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    Rating: Attribute.Integer &
+      Attribute.SetMinMax<{
+        max: 10;
+      }>;
+    Image: Attribute.Media;
+    Premiere: Attribute.Boolean;
+    Comment: Attribute.String;
+    Status: Attribute.Enumeration<['Quiero ver', 'Visto']>;
+    Genre: Attribute.Enumeration<
+      [
+        'Comedia',
+        'Ciencia Ficci\u00F3n',
+        'Acci\u00F3n',
+        'Musical',
+        'Terror',
+        'Aventuras',
+        'Drama',
+        'Fantas\u00EDa',
+        'Suspense',
+        'Animaci\u00F3n',
+        'Rom\u00E1ntico',
+        'Western',
+        'Documental',
+        'Serie'
+      ]
+    >;
+    movies_users: Attribute.Relation<
+      'api::film.film',
+      'manyToMany',
+      'api::movies-user.movies-user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::film.film', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::film.film', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGroupGroup extends Schema.CollectionType {
+  collectionName: 'groups';
+  info: {
+    singularName: 'group';
+    pluralName: 'groups';
+    displayName: 'Group';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    people: Attribute.Relation<
+      'api::group.group',
+      'oneToMany',
+      'api::person.person'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::group.group',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::group.group',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMoviesUserMoviesUser extends Schema.CollectionType {
+  collectionName: 'movies_users';
+  info: {
+    singularName: 'movies-user';
+    pluralName: 'movies-users';
+    displayName: 'MoviesUser';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Username: Attribute.String;
+    Email: Attribute.Email;
+    Password: Attribute.Password;
+    users_permissions_user: Attribute.Relation<
+      'api::movies-user.movies-user',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    films: Attribute.Relation<
+      'api::movies-user.movies-user',
+      'manyToMany',
+      'api::film.film'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::movies-user.movies-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::movies-user.movies-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPersonPerson extends Schema.CollectionType {
+  collectionName: 'people';
+  info: {
+    singularName: 'person';
+    pluralName: 'people';
+    displayName: 'Person';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    surname: Attribute.String;
+    gender: Attribute.Enumeration<['Male', 'Female', 'Other']>;
+    group: Attribute.Relation<
+      'api::person.person',
+      'manyToOne',
+      'api::group.group'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::person.person',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::person.person',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -681,177 +852,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiFilmFilm extends Schema.CollectionType {
-  collectionName: 'films';
-  info: {
-    singularName: 'film';
-    pluralName: 'films';
-    displayName: 'Film';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String;
-    Rating: Attribute.Integer &
-      Attribute.SetMinMax<{
-        max: 10;
-      }>;
-    Image: Attribute.Media;
-    Premiere: Attribute.Boolean;
-    Comment: Attribute.String;
-    Status: Attribute.Enumeration<['Quiero ver', 'Visto']>;
-    Genre: Attribute.Enumeration<
-      [
-        'Comedia',
-        'Ciencia Ficci\u00F3n',
-        'Acci\u00F3n',
-        'Musical',
-        'Terror',
-        'Aventuras',
-        'Drama',
-        'Fantas\u00EDa',
-        'Suspense',
-        'Animaci\u00F3n',
-        'Rom\u00E1ntico',
-        'Western',
-        'Documental',
-        'Serie'
-      ]
-    >;
-    movies_users: Attribute.Relation<
-      'api::film.film',
-      'manyToMany',
-      'api::movies-user.movies-user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::film.film', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::film.film', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiGroupGroup extends Schema.CollectionType {
-  collectionName: 'groups';
-  info: {
-    singularName: 'group';
-    pluralName: 'groups';
-    displayName: 'Group';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    people: Attribute.Relation<
-      'api::group.group',
-      'oneToMany',
-      'api::person.person'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::group.group',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::group.group',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiMoviesUserMoviesUser extends Schema.CollectionType {
-  collectionName: 'movies_users';
-  info: {
-    singularName: 'movies-user';
-    pluralName: 'movies-users';
-    displayName: 'MoviesUser';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Username: Attribute.String;
-    Email: Attribute.Email;
-    Password: Attribute.Password;
-    users_permissions_user: Attribute.Relation<
-      'api::movies-user.movies-user',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    films: Attribute.Relation<
-      'api::movies-user.movies-user',
-      'manyToMany',
-      'api::film.film'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::movies-user.movies-user',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::movies-user.movies-user',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPersonPerson extends Schema.CollectionType {
-  collectionName: 'people';
-  info: {
-    singularName: 'person';
-    pluralName: 'people';
-    displayName: 'Person';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    surname: Attribute.String;
-    gender: Attribute.Enumeration<['Male', 'Female', 'Other']>;
-    group: Attribute.Relation<
-      'api::person.person',
-      'manyToOne',
-      'api::group.group'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::person.person',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::person.person',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -862,16 +862,16 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::film.film': ApiFilmFilm;
+      'api::group.group': ApiGroupGroup;
+      'api::movies-user.movies-user': ApiMoviesUserMoviesUser;
+      'api::person.person': ApiPersonPerson;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::film.film': ApiFilmFilm;
-      'api::group.group': ApiGroupGroup;
-      'api::movies-user.movies-user': ApiMoviesUserMoviesUser;
-      'api::person.person': ApiPersonPerson;
     }
   }
 }
