@@ -793,9 +793,9 @@ export interface ApiMoviesUserMoviesUser extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Username: Attribute.String;
-    Email: Attribute.Email;
-    Password: Attribute.Password;
+    username: Attribute.String;
+    email: Attribute.Email;
+    password: Attribute.Password;
     users_permissions_user: Attribute.Relation<
       'api::movies-user.movies-user',
       'oneToOne',

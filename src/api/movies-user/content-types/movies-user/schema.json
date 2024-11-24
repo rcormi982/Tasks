@@ -12,13 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Username": {
+    "username": {
       "type": "string"
     },
-    "Email": {
+    "email": {
       "type": "email"
     },
-    "Password": {
+    "password": {
       "type": "password"
     },
     "users_permissions_user": {
