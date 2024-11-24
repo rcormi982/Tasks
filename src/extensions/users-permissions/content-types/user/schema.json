@@ -70,6 +70,12 @@
       "relation": "oneToOne",
       "target": "api::movies-user.movies-user",
       "mappedBy": "users_permissions_user"
+    },
+    "films": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::film.film",
+      "mappedBy": "users_permissions_users"
     }
   }
 }

@@ -67,6 +67,12 @@
       "relation": "manyToMany",
       "target": "api::movies-user.movies-user",
       "inversedBy": "films"
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "films"
     }
   }
 }
