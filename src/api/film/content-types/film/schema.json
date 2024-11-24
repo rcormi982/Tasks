@@ -33,7 +33,7 @@
     "Premiere": {
       "type": "boolean"
     },
-    "Comment": {
+    "Comments": {
       "type": "string"
     },
     "Status": {

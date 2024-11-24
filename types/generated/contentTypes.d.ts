@@ -700,7 +700,7 @@ export interface ApiFilmFilm extends Schema.CollectionType {
       }>;
     Image: Attribute.Media;
     Premiere: Attribute.Boolean;
-    Comment: Attribute.String;
+    Comments: Attribute.String;
     Status: Attribute.Enumeration<['Quiero ver', 'Visto']>;
     Genre: Attribute.Enumeration<
       [
