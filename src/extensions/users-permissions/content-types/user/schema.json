@@ -73,9 +73,9 @@
     },
     "films": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::film.film",
-      "mappedBy": "users_permissions_users"
+      "mappedBy": "users_permissions_user"
     }
   }
 }
