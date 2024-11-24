@@ -62,9 +62,9 @@
         "Serie"
       ]
     },
-    "movies_user": {
+    "movies_users": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::movies-user.movies-user",
       "inversedBy": "films"
     },
