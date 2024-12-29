@@ -725,15 +725,15 @@ export interface ApiFilmFilm extends Schema.CollectionType {
         'Serie'
       ]
     >;
-    movies_users: Attribute.Relation<
-      'api::film.film',
-      'manyToMany',
-      'api::movies-user.movies-user'
-    >;
     users_permissions_user: Attribute.Relation<
       'api::film.film',
       'manyToOne',
       'plugin::users-permissions.user'
+    >;
+    movies_user: Attribute.Relation<
+      'api::film.film',
+      'manyToOne',
+      'api::movies-user.movies-user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -803,7 +803,7 @@ export interface ApiMoviesUserMoviesUser extends Schema.CollectionType {
     >;
     films: Attribute.Relation<
       'api::movies-user.movies-user',
-      'manyToMany',
+      'oneToMany',
       'api::film.film'
     >;
     createdAt: Attribute.DateTime;

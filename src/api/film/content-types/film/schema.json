@@ -62,16 +62,16 @@
         "Serie"
       ]
     },
-    "movies_users": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::movies-user.movies-user",
-      "inversedBy": "films"
-    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
+      "inversedBy": "films"
+    },
+    "movies_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::movies-user.movies-user",
       "inversedBy": "films"
     }
   }
