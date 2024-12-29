@@ -730,9 +730,9 @@ export interface ApiFilmFilm extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    movies_user: Attribute.Relation<
+    movies_users: Attribute.Relation<
       'api::film.film',
-      'manyToOne',
+      'manyToMany',
       'api::movies-user.movies-user'
     >;
     createdAt: Attribute.DateTime;
@@ -803,7 +803,7 @@ export interface ApiMoviesUserMoviesUser extends Schema.CollectionType {
     >;
     films: Attribute.Relation<
       'api::movies-user.movies-user',
-      'oneToMany',
+      'manyToMany',
       'api::film.film'
     >;
     createdAt: Attribute.DateTime;
