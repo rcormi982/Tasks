@@ -806,6 +806,7 @@ export interface ApiMoviesUserMoviesUser extends Schema.CollectionType {
       'manyToMany',
       'api::film.film'
     >;
+    Image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

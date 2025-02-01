@@ -32,6 +32,16 @@
       "relation": "manyToMany",
       "target": "api::film.film",
       "mappedBy": "movies_users"
+    },
+    "Image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
