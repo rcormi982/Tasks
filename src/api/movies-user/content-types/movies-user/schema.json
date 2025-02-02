@@ -33,7 +33,7 @@
       "target": "api::film.film",
       "mappedBy": "movies_users"
     },
-    "image": {
+    "imageUrl": {
       "type": "media",
       "multiple": false,
       "required": false,
